@@ -34,11 +34,3 @@ services:
       - "3001:3001"
     depends_on:
       - api
-
-volumes:
-  db:
-    # driver: local
-    # driver_opts:
-    #   type: none
-    #   device: ./bezkoder-app/db
-    #   o: bind

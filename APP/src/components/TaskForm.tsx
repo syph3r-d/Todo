@@ -18,9 +18,9 @@ export const TaskForm = () => {
       "tasks",
     ] as unknown as InvalidateQueryFilters);
     if (res.success) {
-      console.log("Task added successfully");
+      alert("Task added successfully");
     } else {
-      console.error("Error adding task");
+      alert("Error adding task");
     }
 
     setIsLoading(false);
@@ -42,6 +42,7 @@ export const TaskForm = () => {
             type="submit"
             isLoading={isLoading}
             disabled={isLoading}
+            data-testid="add-task-button"
           >
             Add
           </Button>
