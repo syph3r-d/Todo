@@ -20,8 +20,6 @@ services:
     restart: unless-stopped
     env_file: ./API/.env
     command: sh -c "npm run run:migrations && npm run build && npm run start"
-    environment:
-      - DB_HOST=postgresdb
     ports:
       - "3000:3000"
     stdin_open: true

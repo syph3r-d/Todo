@@ -3,12 +3,8 @@ import config from "../config";
 
 const TasksService = {
   getTasks: async () => {
-    try {
-      const response = await fetch(`${config.backend}/todo?done=false`);
-      return response.json();
-    } catch (error) {
-      return { success: false, data: "Failed to fetch tasks" };
-    }
+    const response = await fetch(`${config.backend}/todo?done=false`);
+    return response.json();
   },
   addTask: async (task: { title: string; description: string }) => {
     try {

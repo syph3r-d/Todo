@@ -20,11 +20,11 @@ export const Todos = () => {
               <TaskForm />
             </div>
             <div className="flex-1 px-12">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 justify-center h-full">
                 {isLoading ? (
-                  <div className="flex">
+                  <div className="mx-auto ">
                     <MoonLoader
-                      size={15}
+                      size={30}
                       color="#000"
                       loading={isLoading}
                       className="mx-auto"
@@ -32,7 +32,7 @@ export const Todos = () => {
                   </div>
                 ) : isError ? (
                   <div className="flex text-red-500">
-                    <span className="mx-auto">Error loading tasks</span>
+                    <span className="mx-auto text-sm">Error loading tasks</span>
                   </div>
                 ) : (
                   data?.data?.map((task: any) => (
