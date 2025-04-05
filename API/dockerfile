@@ -1,8 +1,0 @@
-FROM node:20-alpine
-
-WORKDIR /TODO-API
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 5000
-CMD ["sh", "-c", "npm run run:migrations && npm run run:seeds && npm run build && npm run start"]

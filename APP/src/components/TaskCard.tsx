@@ -18,11 +18,10 @@ export const TaskCard = ({ id, title, description }: Omit<Task, "done">) => {
     queryClient.invalidateQueries([
       "tasks",
     ] as unknown as InvalidateQueryFilters);
-    if (res.success) {
-      console.log("Task deleted successfully");
-    } else {
-      console.error("Error deleting task");
+    if (!res.success) {
+      alert(res.data);
     }
+
     setIsLoading(false);
   };
   return (
