@@ -6,13 +6,13 @@ export const Button = ({
   className,
   varient,
   isLoading,
+  type = "button",
   ...props
-}: {
+}: React.HTMLProps<HTMLButtonElement> & {
+  varient?: "primary" | "outlined";
+  isLoading?: boolean;
   children: React.ReactNode;
   className?: string;
-  isLoading?: boolean;
-  varient?: "primary" | "outlined";
-  [key: string]: any;
 }) => {
   let buttonClass;
   switch (varient) {

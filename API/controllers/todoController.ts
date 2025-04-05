@@ -54,7 +54,7 @@ const todoController = {
           .json({ msg: "Invalid input", errors: errors.array() });
       }
       const { id } = req.params;
-      const { title, description } = req.body;
+      const { title, description, done } = req.body;
       const todo = await dbMain.Todo.findByPk(id);
       if (!todo) {
         return res
@@ -65,6 +65,7 @@ const todoController = {
         {
           title,
           description,
+          done,
           updatedAt: new Date(),
         },
         { transaction: null }

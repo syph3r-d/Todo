@@ -8,5 +8,6 @@ export default {
   updateTodo: [
     check("title", "Title is required").not().isEmpty(),
     check("description", "Description is required").not().isEmpty(),
+    check("done", "Done is required").isBoolean(),
   ],
 };

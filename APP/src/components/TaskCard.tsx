@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Button } from "./forms";
+import TasksService from "../services/TasksService";
+import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
 
 export const TaskCard = ({
   title,
@@ -9,12 +12,39 @@ export const TaskCard = ({
   description: string;
   id: string;
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const queryClient = useQueryClient();
+  const onDone = async () => {
+    setIsLoading(true);
+    const res = await TasksService.updateTask({
+      id,
+      title,
+      description,
+      done: true,
+    });
+    queryClient.invalidateQueries([
+      "tasks",
+    ] as unknown as InvalidateQueryFilters);
+    if (res.success) {
+      console.log("Task deleted successfully");
+    } else {
+      console.error("Error deleting task");
+    }
+    setIsLoading(false);
+  };
   return (
     <div className="rounded-xl bg-gray-300 p-4 drop-shadow-md" key={id}>
       <div className="text-lg font-bold">{title}</div>
       <div className="flex justify-between gap-2 items-center mt-2">
         <div className="font-bold text-sm">{description}</div>
-        <Button varient="outlined">Done</Button>
+        <Button
+          varient="outlined"
+          onClick={onDone}
+          isLoading={isLoading}
+          disabled={isLoading}
+        >
+          Done
+        </Button>
       </div>
     </div>
   );
