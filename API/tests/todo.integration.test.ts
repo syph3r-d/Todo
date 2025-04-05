@@ -3,12 +3,12 @@ import { app, server } from "../app";
 import dbMain from "../database/models";
 
 beforeAll(async () => {
-  await dbMain.sequelize.sync({ force: true }); // reset schema
+  await dbMain.sequelize.sync({ force: true });
 });
 
 afterAll(async () => {
   await dbMain.sequelize.close();
-  server.close(); // close the server
+  server.close();
 });
 
 describe("Todo Integration Tests", () => {

@@ -1,9 +1,8 @@
-// TaskCard.test.tsx
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TaskCard } from "../src/components/TaskCard";
 import TasksService from "../src/services/TasksService";
-import "@testing-library/jest-dom"; // Add this line at the top of your test file
+import "@testing-library/jest-dom";
 
 jest.mock("../src/services/TasksService");
 
