@@ -1,5 +1,5 @@
 export const checkCorsOrigin = (origin: any, callback: any) => {
-  const origins = Object.values(["http://localhost:3000"]);
+  const origins = Object.values(["http://localhost:3001"]);
 
   let result = origins.find(
     (url) => extractHostname(url) == extractHostname(origin)

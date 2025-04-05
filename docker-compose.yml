@@ -9,26 +9,31 @@ services:
       - POSTGRES_USER=$DB_USERNAME
       - POSTGRES_PASSWORD=$DB_PASSWORD
       - POSTGRES_DB=$DB_NAME
-    ports:
-      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
     volumes:
       - db:/var/lib/postgres
-  app:
+  api:
     depends_on:
       - postgresdb
-    build: ./
+    build:
+      context: ./
+      dockerfile: dockerfile.api
     restart: unless-stopped
     env_file: ./API/.env
+    command: sh -c "npm run run:migrations && npm run build && npm run start"
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    environment:
-      - DB_HOST=postgresdb
-      - DB_USER=$DB_USERNAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_NAME=$DB_NAME
-      - DB_PORT=$POSTGRESDB_DOCKER_PORT
+      - "3000:3000"
     stdin_open: true
     tty: true
+  app:
+    build:
+      context: ./
+      dockerfile: dockerfile.app
+    working_dir: /todo/APP
+    command: serve -s dist -l 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - api
 
 volumes:
   db:

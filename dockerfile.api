@@ -1,0 +1,10 @@
+FROM node:20-alpine
+
+WORKDIR /todo/API
+
+# Copy API package.json files
+COPY ./API/package*.json ./
+RUN npm install
+
+# Copy the rest of the API files
+COPY ./API .
