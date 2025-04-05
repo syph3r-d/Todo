@@ -25,6 +25,8 @@ const todoController = {
         message: "Todo created successfully.",
       });
     } catch (error) {
+      console.error(error);
+
       return res
         .status(500)
         .json({ success: false, message: "Internal server error." });
@@ -33,12 +35,26 @@ const todoController = {
 
   getTodo: async (req: Request, res: Response): Promise<any> => {
     try {
-      const todos = await dbMain.Todo.findAll();
+      const { done } = req.query;
+      let query;
+      if (done !== undefined) {
+        query = {
+          where: {
+            done: done === "true" ? true : false,
+          },
+        };
+      }
+      const todos = await dbMain.Todo.findAll({
+        ...query,
+        order: [["createdAt", "DESC"]],
+      });
       return res.status(200).json({
         success: true,
         data: todos,
       });
     } catch (error) {
+      console.error(error);
+
       return res
         .status(500)
         .json({ success: false, message: "Internal server error." });

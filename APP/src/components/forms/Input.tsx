@@ -1,10 +1,7 @@
 export const Input = ({
   className,
   ...props
-}: {
-  className?: string;
-  [key: string]: any;
-}) => {
+}: React.HTMLProps<HTMLInputElement>) => {
   return (
     <input
       {...props}

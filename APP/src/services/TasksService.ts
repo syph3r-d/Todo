@@ -4,13 +4,13 @@ import config from "../config";
 const TasksService = {
   getTasks: async () => {
     try {
-      const response = await fetch(`${config.backend}/todo`);
+      const response = await fetch(`${config.backend}/todo?done=false`);
       return response.json();
     } catch (error) {
       return { success: false, data: "Failed to fetch tasks" };
     }
   },
-  addTask: async (task: Task) => {
+  addTask: async (task: { title: string; description: string }) => {
     try {
       const response = await fetch(`${config.backend}/todo`, {
         method: "POST",

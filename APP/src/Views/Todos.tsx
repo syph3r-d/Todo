@@ -1,8 +1,8 @@
 import { MoonLoader } from "react-spinners";
-import { Button, Input } from "../components/forms";
 import { TaskCard } from "../components/TaskCard";
 import { useQuery } from "@tanstack/react-query";
 import TasksService from "../services/TasksService";
+import { TaskForm } from "../components/TaskForm";
 
 export const Todos = () => {
   const { data, isLoading, isError } = useQuery({
@@ -17,14 +17,7 @@ export const Todos = () => {
         <div className="bg-white py-4 rounded-xl">
           <div className="flex ">
             <div className="flex-1 border-r border-gray-300 px-12">
-              <div className="font-bold text-lg text-start">Add a Task</div>
-              <Input type="text" required placeholder="Title" />
-              <Input type="text" required placeholder="Description" />
-              <div className="flex justify-end">
-                <Button varient="primary" type="submit">
-                  Add
-                </Button>
-              </div>
+              <TaskForm />
             </div>
             <div className="flex-1 px-12">
               <div className="flex flex-col gap-2">

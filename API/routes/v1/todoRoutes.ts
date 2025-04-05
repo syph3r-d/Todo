@@ -4,9 +4,9 @@ import todoValidations from "../../validations/todos";
 
 const router = express.Router();
 
-router.post("/", todoController.createTodo, todoValidations.addTodo);
+router.post("/", todoValidations.addTodo, todoController.createTodo);
 router.get("/", todoController.getTodo);
-router.put("/:id", todoController.updateTodo, todoValidations.updateTodo);
+router.put("/:id", todoValidations.updateTodo, todoController.updateTodo);
 router.delete("/:id", todoController.deleteTodo);
 
 export default router;
