@@ -11,10 +11,10 @@ module.exports = {
     dialect: "postgres",
   },
   test: {
-    username: "root",
-    password: null,
-    database: "database_test",
-    host: "127.0.0.1",
+    username: "test",
+    password: "test",
+    database: "database_test_todo",
+    host: "localhost",
     dialect: "postgres",
   },
   production: {

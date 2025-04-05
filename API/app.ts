@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { checkCorsOrigin } from "./utils/cors";
 import routes from "./routes";
-const app = express();
+export const app = express();
 const port = process.env.NODE_LOCAL_PORT || 3000;
 
 app.use(express.json());
@@ -15,6 +15,6 @@ app.use(
 
 app.use(routes);
 
-app.listen(port, () => {
+export const server = app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
