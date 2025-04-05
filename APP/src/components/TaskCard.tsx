@@ -2,16 +2,9 @@ import { useState } from "react";
 import { Button } from "./forms";
 import TasksService from "../services/TasksService";
 import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
+import { Task } from "../types";
 
-export const TaskCard = ({
-  title,
-  description,
-  id,
-}: {
-  title: string;
-  description: string;
-  id: string;
-}) => {
+export const TaskCard = ({ id, title, description }: Omit<Task, "done">) => {
   const [isLoading, setIsLoading] = useState(false);
   const queryClient = useQueryClient();
   const onDone = async () => {

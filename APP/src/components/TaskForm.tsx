@@ -5,6 +5,10 @@ import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
 
 export const TaskForm = () => {
   const queryClient = useQueryClient();
+  const [actionFeedback, setActionFeedback] = useState<{
+    success: boolean;
+    message: string;
+  } | null>();
   const [isLoading, setIsLoading] = useState(false);
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -18,11 +22,22 @@ export const TaskForm = () => {
       "tasks",
     ] as unknown as InvalidateQueryFilters);
     if (res.success) {
-      alert("Task added successfully");
+      setActionFeedback({
+        success: true,
+        message: "Task added successfully",
+      });
+      setTimeout(() => {
+        setActionFeedback(null);
+      }, 2000);
     } else {
-      alert("Error adding task");
+      setActionFeedback({
+        success: false,
+        message: res.message,
+      });
+      setTimeout(() => {
+        setActionFeedback(null);
+      }, 2000);
     }
-
     setIsLoading(false);
   };
   return (
@@ -47,6 +62,15 @@ export const TaskForm = () => {
             Add
           </Button>
         </div>
+        {actionFeedback && (
+          <div
+            className={`${
+              !actionFeedback.success ? "text-red-500" : "text-green-500"
+            } text-sm mt-2`}
+          >
+            {actionFeedback.message}
+          </div>
+        )}
       </form>
     </div>
   );

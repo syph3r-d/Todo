@@ -37,6 +37,9 @@ describe("TaskForm", () => {
         title: "New Task",
         description: "New Task description",
       });
+      expect(
+        screen.queryByText(/Task added successfully/i)
+      ).toBeInTheDocument();
     });
   });
 });
