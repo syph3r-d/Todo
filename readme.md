@@ -5,8 +5,7 @@ This project is a fullstack web application containing both a **Node.js backend*
 ## 🗂️ Project Structure
 
 ```
-/api
-
+/API
     ├── controllers
     ├── database
     │     ├── config
@@ -19,7 +18,7 @@ This project is a fullstack web application containing both a **Node.js backend*
     ├── tests
     ├── package.json
 
-/app
+/APP
     ├── public
     ├── src
     │   ├── components
