@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Input } from "./components";
 
 function App() {
   return (
@@ -8,25 +9,12 @@ function App() {
           <div className="flex ">
             <div className="flex-1 border-r border-gray-300 px-12">
               <div className="font-bold text-lg text-start">Add a Task</div>
-              <input
-                type="text"
-                required
-                className="border rounded-lg p-2 w-full mt-2 border-gray-300 text-sm"
-                placeholder="Title"
-              />
-              <input
-                type="text"
-                required
-                className="border rounded-lg p-2 w-full mt-2 border-gray-300 text-sm"
-                placeholder="Description"
-              />
+              <Input type="text" required placeholder="Title" />
+              <Input type="text" required placeholder="Description" />
               <div className="flex justify-end">
-                <button
-                  className="bg-blue-500 text-white rounded-lg py-1 mt-2 px-8 text-sm hover:bg-blue-600 cursor-pointer active:bg-blue-700"
-                  type="submit"
-                >
+                <Button varient="primary" type="submit">
                   Add
-                </button>
+                </Button>
               </div>
             </div>
             <div className="flex-1 px-12">
@@ -35,18 +23,14 @@ function App() {
                   <div className="text-lg font-bold">Task 1</div>
                   <div className="flex justify-between gap-2 items-center mt-2">
                     <div className="font-bold text-sm">Description</div>
-                    <button className="border border-black rounded-lg px-6 py-1 text-sm hover:bg-gray-200 cursor-pointer active:bg-gray-300">
-                      Done
-                    </button>
+                    <Button varient="outlined">Done</Button>
                   </div>
                 </div>
                 <div className="rounded-xl bg-gray-300 p-4 drop-shadow-md">
                   <div className="text-lg font-bold">Task 1</div>
                   <div className="flex justify-between gap-2 items-center mt-2">
                     <div className="font-bold text-sm">Description</div>
-                    <button className="border border-black rounded-lg px-6 py-1 text-sm hover:bg-gray-200 cursor-pointer active:bg-gray-300">
-                      Done
-                    </button>
+                    <Button varient="outlined">Done</Button>
                   </div>
                 </div>
               </div>
