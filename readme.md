@@ -8,9 +8,14 @@ This project is a fullstack web application containing both a **Node.js backend*
 /api
 
     ├── controllers
-    ├── models
+    ├── database
+    │     ├── config
+    │     ├── migrations
+    │     ├── models
+    │     ├── seeders
     ├── routes
     ├── utils
+    ├── validations
     ├── tests
     ├── package.json
 
@@ -18,9 +23,10 @@ This project is a fullstack web application containing both a **Node.js backend*
     ├── public
     ├── src
     │   ├── components
-    │   ├── pages
+    │   ├── config
     │   ├── services
-    │   └── styles
+    │   ├── types
+    │   └── views
     ├── tests
     ├── package.json
     └── Dockerfile
@@ -72,16 +78,18 @@ This will:
 - Frontend: http://localhost:3001
 - Backend (API): http://localhost:3000
 
+---
+
 ## 🧪 Scripts
 
 ### Backend (API/package.json)
 
-- npm run run:migrations – Run DB migrations
-- npm run run:seeds – Seed the database
-- npm run build – Build backend code
-- npm start – Start the backend server
+- `npm run run:migrations` – Run DB migrations
+- `npm run run:seeds` – Seed the database
+- `npm run build` – Build backend code
+- `npm start` – Start the backend server
 
 ### Frontend (APP/package.json)
 
-- npm run build – Build frontend
-- npm run dev – Start frontend app (dev mode)
+- `npm run build` – Build frontend
+- `npm run dev` – Start frontend app (dev mode)
