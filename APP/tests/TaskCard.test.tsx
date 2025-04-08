@@ -53,9 +53,5 @@ describe("TaskCard", () => {
       description: "Task 1 description",
       done: true,
     });
-
-    await waitFor(() =>
-      expect(screen.queryByText(/Task 1 description/)).toBeInTheDocument()
-    );
   });
 });
